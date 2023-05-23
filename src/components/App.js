@@ -3,6 +3,8 @@ import BottomNavigation from "./Bottom_Navigation ";
 import { AuthContext } from "../contexts/AuthContext";
 import Routing from "./Routes";
 import Navbar from "./Navbar";
+import BookCard from "./BookCard";
+import Bookjson from "./book.json"; 
 
 
 function App() {
@@ -10,10 +12,15 @@ function App() {
   const {user, login, logout, token, loading, error} = useContext(AuthContext);
   return (
     <div className="w-full h-screen dark:bg-gray-500 dark:text-slate-50">
-      <Navbar />
-    {token && <BottomNavigation />}
-    <Routing />
-    </div>
+        <Navbar />
+        {token && <BottomNavigation />}
+
+
+
+    
+
+        <Routing />
+      </div>
   );
 }
 

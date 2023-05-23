@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Route ,Routes} from 'react-router'
 import { AuthContext } from '../contexts/AuthContext'
 import { Navigate } from 'react-router-dom'
+import Register from '../pages/Register'
+import Login from '../pages/Login'
 
 function Routing() {
   const {token} = useContext(AuthContext)
@@ -9,8 +11,8 @@ function Routing() {
   return (
     <div>
         <Routes>
-            <Route path="/register" element={!token?"register page":<Navigate to="/"/>} />
-            <Route path="/login" element={!token?"login page":<Navigate to="/"/>} />
+            <Route path="/register" element={!token?<Register />:<Navigate to="/"/>} />
+            <Route path="/login" element={!token?<Login />:<Navigate to="/"/>} />
             <Route path="/" element={"Home page"} />
 
             <Route path="/Profile" element={token?"Profile page":<Navigate to="/login"/>} />
