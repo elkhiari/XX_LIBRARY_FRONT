@@ -13,13 +13,13 @@ function Login() {
     
                     <input 
                         type="text"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                        className="block border dark:text-black border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                         name="email"
                         placeholder="Email" />
 
                     <input 
                         type="password"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                        className="block border dark:text-black border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                         name="password"
                         placeholder="Password" />
                     
@@ -28,7 +28,7 @@ function Login() {
 
                     <button
                         type="submit"
-                        className="w-full text-center py-3 rounded bg-blue-400  hover:bg-blue-600 hover:tracking-widest  duration-150 ease-in-out hover:scale-105 text-white hover:bg-green-dark focus:outline-none my-1"
+                        className="w-full text-center  py-3 rounded bg-blue-400  hover:bg-blue-600 hover:tracking-widest  duration-150 ease-in-out hover:scale-105 text-white hover:bg-green-dark focus:outline-none my-1"
                     >Sign in</button>
                 </div>
 

@@ -19,7 +19,7 @@ function Register() {
   return (
     <div>
 <div className="bg-grey-lighter min-h-screen flex flex-col syne text-sm 2xl:text-base pt-14 pb-14">
-            <div className="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2 ">
                 <div className=" px-6 py-8 rounded  w-full">
                     <h1 className="mb-8 text-3xl text-center font-extrabold">Sign up</h1>
                     <div className='mb-4'>
@@ -31,24 +31,24 @@ function Register() {
                     </div>
                     <input 
                         type="text"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:text-black"
                         name="fullname"
                         placeholder="Full Name" />
 
                     <input 
                         type="text"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:text-black"
                         name="email"
                         placeholder="Email" />
 
                     <input 
                         type="password"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:text-black"
                         name="password"
                         placeholder="Password" />
                     <input 
                         type="password"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                        className="block border border-grey-light w-full p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:text-black"
                         name="confirm_password"
                         placeholder="Confirm Password" />
 
@@ -56,9 +56,9 @@ function Register() {
                       <label htmlFor="">
                         Gender:
                       </label>
-                        <BiMaleSign onClick={()=>setGender("male")} className={(gender === "male"?"border-4 border-dotted border-red-600":"")+'text-sm cursor-pointer p-3 w-[50px] bg-blue-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full' }/>
+                        <BiMaleSign onClick={()=>setGender("male")} className={(gender === "male"?"border-4 border-solid ":"")+'text-sm border-blue-600 cursor-pointer p-3 w-[50px] bg-blue-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full' }/>
                         
-                        <BiFemaleSign onClick={()=>setGender("Female")} className={(gender === "Female"?"border-4 border-dotted border-red-600":"")+'text-sm cursor-pointer p-3 w-[50px] bg-pink-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full'}/>
+                        <BiFemaleSign onClick={()=>setGender("Female")} className={(gender === "Female"?"border-4 border-solid ":"")+'border-gray-400 text-sm cursor-pointer p-3 w-[50px] bg-pink-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full '}/>
                     </div>
 
                     <button
