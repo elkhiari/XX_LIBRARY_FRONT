@@ -18,7 +18,7 @@ function Register() {
   }, [file])
   return (
     <div>
-<div className="bg-grey-lighter min-h-screen flex flex-col syne ">
+<div className="bg-grey-lighter min-h-screen flex flex-col syne text-sm 2xl:text-base pt-14 pb-14">
             <div className="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className=" px-6 py-8 rounded  w-full">
                     <h1 className="mb-8 text-3xl text-center font-extrabold">Sign up</h1>
