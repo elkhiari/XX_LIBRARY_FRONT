@@ -56,9 +56,9 @@ function Register() {
                       <label htmlFor="">
                         Gender:
                       </label>
-                        <BiMaleSign onClick={()=>setGender("male")} className={(gender === "male"?"border-4 border-solid ":"")+'text-sm border-blue-600 cursor-pointer p-3 w-[50px] bg-blue-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full' }/>
+                        <BiMaleSign onClick={()=>setGender("male")} className={(gender === "male"?"border-4 border-dashed ":"")+'text-sm border-white dark:border-gray-900 cursor-pointer p-3 w-[50px] bg-blue-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full' }/>
                         
-                        <BiFemaleSign onClick={()=>setGender("Female")} className={(gender === "Female"?"border-4 border-solid ":"")+'border-gray-400 text-sm cursor-pointer p-3 w-[50px] bg-pink-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full '}/>
+                        <BiFemaleSign onClick={()=>setGender("Female")} className={(gender === "Female"?"border-4 border-dashed ":"")+'border-white dark:border-gray-900 text-sm cursor-pointer p-3 w-[50px] bg-pink-400 duration-150 ease-out hover:scale-105 h-[50px] rounded-full '}/>
                     </div>
 
                     <button

@@ -14,11 +14,6 @@ function App() {
     <div className="w-full min-h-screen dark:bg-gray-900 dark:text-slate-50">
         <Navbar />
         {token && <BottomNavigation />}
-
-
-
-    
-
         <Routing />
       </div>
   );

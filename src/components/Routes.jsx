@@ -4,6 +4,7 @@ import { AuthContext } from '../contexts/AuthContext'
 import { Navigate } from 'react-router-dom'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
+import Home from '../pages/Home'
 
 function Routing() {
   const {token} = useContext(AuthContext)
@@ -13,7 +14,7 @@ function Routing() {
         <Routes>
             <Route path="/register" element={!token?<Register />:<Navigate to="/"/>} />
             <Route path="/login" element={!token?<Login />:<Navigate to="/"/>} />
-            <Route path="/" element={"Home page"} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/Profile" element={token?"Profile page":<Navigate to="/login"/>} />
             <Route path="/Dashboard" element={token?"Dashboard page":<Navigate to="/login"/>} />
