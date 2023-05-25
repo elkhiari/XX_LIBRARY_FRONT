@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import CoverError from '../assets/images/cover-error.png'
+import CoverError from '../../assets/images/cover-error.png'
 
 function BookCard({book,boxShadow}) {
   return (

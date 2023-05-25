@@ -1,15 +1,23 @@
-import React, { useContext } from 'react'
-import logo from '../assets/images/Logo.png';
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../contexts/AuthContext'
+import React, { useContext, useEffect, useState } from 'react'
+import logo from '../../assets/images/Logo.png';
+import { Link, useResolvedPath } from 'react-router-dom'
+import { AuthContext } from '../../contexts/AuthContext'
 import { MdOutlineLightMode,MdOutlineDarkMode } from "react-icons/md";
 
 function Navbar() {
     const {toggleDarkMode, darkMode,token} = useContext(AuthContext)
+    const path = useResolvedPath();
+    const [scrollTop, setScrollTop] = useState(0);
+    const onScroll = (e) => {
+        setScrollTop(e.target.documentElement.scrollTop);
+    };
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [scrollTop]);
   return (
     <div>
-
-            <nav className="bg-white border-gray-200 dark:bg-gray-900 absolute w-full">
+        <nav className={`${path.pathname === '/'?(scrollTop === 0?"bg-blue-50 dark:bg-blue-900  shadow-sm":""): (scrollTop === 0?'bg-white dark:bg-gray-900 border-gray-200':"")}   fixed w-full top-0 z-50 backdrop-blur-sm duration-150`}>
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to={"/"} className="flex items-center syne">
                     <img src={logo} className="h-8 mr-3" alt="Flowbite Logo" />
@@ -26,8 +34,7 @@ function Navbar() {
                     </button>
                 </div>
             </div>
-            </nav>
-
+        </nav>
     </div>
   )
 }

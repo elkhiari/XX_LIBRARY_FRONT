@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Route ,Routes} from 'react-router'
-import { AuthContext } from '../contexts/AuthContext'
+import { AuthContext } from '../../contexts/AuthContext'
 import { Navigate } from 'react-router-dom'
-import Register from '../pages/Register'
-import Login from '../pages/Login'
-import Home from '../pages/Home'
+import Register from '../../pages/Register'
+import Login from '../../pages/Login'
+import Home from '../../pages/Home'
 
 function Routing() {
   const {token} = useContext(AuthContext)
@@ -15,7 +15,7 @@ function Routing() {
             <Route path="/register" element={!token?<Register />:<Navigate to="/"/>} />
             <Route path="/login" element={!token?<Login />:<Navigate to="/"/>} />
             <Route path="/" element={<Home />} />
-
+            
             <Route path="/Profile" element={token?"Profile page":<Navigate to="/login"/>} />
             <Route path="/Dashboard" element={token?"Dashboard page":<Navigate to="/login"/>} />
             <Route path="/Settings" element={token?"Settings page":<Navigate to="/login"/>} />

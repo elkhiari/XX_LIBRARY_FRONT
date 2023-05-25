@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import BottomNavigation from "./Bottom_Navigation ";
+import BottomNavigation from "./Navigation/Bottom_Navigation ";
 import { AuthContext } from "../contexts/AuthContext";
-import Routing from "./Routes";
-import Navbar from "./Navbar";
-import BookCard from "./BookCard";
-import Bookjson from "./book.json"; 
+import Routing from "./utils/Routes";
+import Navbar from "./Navigation/Navbar";
+
 
 
 function App() {

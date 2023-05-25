@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ImBooks } from 'react-icons/im'
 import { FiLogOut } from 'react-icons/fi'
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 function Bottom_navigation () {
     const {logout } = useContext(AuthContext);
