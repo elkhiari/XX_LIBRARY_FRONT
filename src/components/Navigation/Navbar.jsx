@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext'
 import { MdOutlineLightMode,MdOutlineDarkMode } from "react-icons/md";
 
 function Navbar() {
-    const {toggleDarkMode, darkMode,token} = useContext(AuthContext)
+    const {toggleDarkMode, darkMode,token,user} = useContext(AuthContext)
     const path = useResolvedPath();
     const [scrollTop, setScrollTop] = useState(0);
     const onScroll = (e) => {
@@ -26,7 +26,7 @@ function Navbar() {
                 <div className="flex items-center md:order-2">
                     {token && <Link to={"/profile"} className="flex mr-3 text-sm bg-gray-800 rounded-full  focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span className="sr-only">Open user menu</span>
-                        <img className="w-8 h-8 rounded-full" src="https://raw.githubusercontent.com/elkhiari/feeds_app_front/main/src/user.png" alt="user photo" />
+                        <img className="w-8 h-8 rounded-full" src={user.avatar} alt="user photo" />
                     </Link>}
                     <button type="button" onClick={toggleDarkMode} className="flex mr-3 text-sm dark:bg-gray-800 bg-gray-200 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span className="sr-only">Open user menu</span>

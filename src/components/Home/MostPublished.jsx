@@ -24,16 +24,16 @@ function MostPublished() {
         }}
         breakpoints={{
             640: {
-                slidesPerView: 5,
-            },
-            768: {
-                slidesPerView: 5,
-            },
-            1024: {
                 slidesPerView: 6,
             },
-            1280: {
+            768: {
+                slidesPerView: 6,
+            },
+            1024: {
                 slidesPerView: 7,
+            },
+            1280: {
+                slidesPerView: 8,
             },
             1536: {
                 slidesPerView: 10,

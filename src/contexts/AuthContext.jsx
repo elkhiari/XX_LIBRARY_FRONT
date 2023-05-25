@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loginError, setLoginError] = useState(null);
   const [darkMode, setDarkMode] = useState(window.localStorage.getItem("darkMode"));
 
   // Toggle Dark Mode Function and save it to local storage , and when refresh the page get the value from local storage and set it to dark mode state id and change it in html class
@@ -42,20 +43,19 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setLoading(true);
     try {
-      const response = await axios.post("YOUR_API_URL", {
-        identifier: email,
+      const response = await axios.post(process.env.REACT_APP_API_URL+"/users/login", {
+        email: email,
         password: password,
       });
       const data = response.data;
       if (data.message) {
-        setError(data.message[0].messages[0].message);
-      } else {
         setUser(data.user);
-        setToken(data.jwt);
+        setToken(data.token);
         navigate("/");
+        setLoginError(null);
       }
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      setLoginError(error.response.data.message+". Please try again.");
       console.log(error);
     }
     setLoading(false);
@@ -80,6 +80,7 @@ const AuthProvider = ({ children }) => {
       setUser(data.user);
     } catch (error) {
       logout()
+      setError("An error occurred. please try login again")
     }
     setLoading(false);
   };
@@ -95,7 +96,7 @@ const AuthProvider = ({ children }) => {
   }, [token]);
 
 
-  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode };
+  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode ,setError,setLoginError,loginError};
 
   return (
     <AuthContext.Provider value={value}>
