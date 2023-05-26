@@ -14,10 +14,9 @@ function App() {
     <div className="w-full min-h-screen dark:bg-gray-900 dark:text-slate-50 ">
         <Navbar />
         {token && <BottomNavigation />}
-        <div className="fixed flex pt-4 z-50 -translate-x-1/2 left-1/2 top-1/2 -translate-y-1/2 place-content-center place-items-center duration-150 ">
-          {error && <Alert error={error} setError={setError} />}
-          {/* {loading && <Alert type="info" message="Loading..." />} */}
-        </div>
+        {error &&<div className="fixed top-20 w-full z-50 place-content-center place-items-center flex">
+           <Alert error={error} setError={setError} />
+        </div>}
         <Routing />
       </div>
   );

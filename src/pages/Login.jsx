@@ -7,7 +7,7 @@ import { AuthContext } from '../contexts/AuthContext'
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { login,setLoginError,loginError } = useContext(AuthContext)
+    const { login,setLoginError,loginError,loading } = useContext(AuthContext)
     
     const HandleLogin = () => {
         if(!email || !password) return( setLoginError('Please fill in all fields'))
@@ -60,7 +60,23 @@ function Login() {
                         onClick={HandleLogin}
                         type="button"
                         className="w-full text-center  py-3 rounded bg-blue-400  hover:bg-blue-600 hover:tracking-widest  duration-150 ease-in-out hover:scale-105 text-white hover:bg-green-dark focus:outline-none my-1"
-                    >Sign in</button>
+                    >
+                      {loading === false?"Sign in":
+                        <div className="flex justify-center">
+                            <svg class="w-8 h-8 animate-spin text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 4.75V6.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M17.1266 6.87347L16.0659 7.93413" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M19.25 12L17.75 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M17.1266 17.1265L16.0659 16.0659" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12 17.75V19.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M7.9342 16.0659L6.87354 17.1265" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M6.25 12L4.75 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M7.9342 7.93413L6.87354 6.87347" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                      }
+                        
+                        </button>
                 </div>
 
                 <div className="text-grey-dark mt-6">

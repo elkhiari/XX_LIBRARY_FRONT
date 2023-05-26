@@ -10,9 +10,10 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [loginError, setLoginError] = useState(null);
+  const [registerError, setRegisterError] = useState(null);
   const [darkMode, setDarkMode] = useState(window.localStorage.getItem("darkMode"));
-
-  // Toggle Dark Mode Function and save it to local storage , and when refresh the page get the value from local storage and set it to dark mode state id and change it in html class
+  const navigate = useNavigate();
+  
   const toggleDarkMode = () => {
     if (darkMode === "dark") {
       setDarkMode("light");
@@ -35,11 +36,6 @@ const AuthProvider = ({ children }) => {
 
 
 
-  
-
-
-  const navigate = useNavigate();
-
   const login = async (email, password) => {
     setLoading(true);
     try {
@@ -51,7 +47,11 @@ const AuthProvider = ({ children }) => {
       if (data.message) {
         setUser(data.user);
         setToken(data.token);
+        window.localStorage.setItem("token", data.token);
         navigate("/");
+        setError(
+          `Welcome back, ${data.user.name}! We're thrilled to see you again. Get ready to pick up where you left off and make the most of your time here. Happy exploring!`
+        );
         setLoginError(null);
       }
     } catch (error) {
@@ -61,10 +61,41 @@ const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const register = async (email, password, name , gender, avatar) => {
+    setLoading(true);
+    try {
+        const response = await axios.post(process.env.REACT_APP_API_URL+"/users/register", {
+          email,
+          password,
+          name,
+          gender,
+          avatar
+        });
+        const data = response.data;
+        if (data.message) {
+          setUser(data.user);
+          setToken(data.token);
+          window.localStorage.setItem("token", data.token);
+          navigate("/");
+          setError(
+            `Dear ${data.user.name}, Congratulations! You have successfully registered`
+          )
+        }
+    } catch (error) {
+        setRegisterError(error.response.data.message+". Please try again.");
+        console.log(error);
+    }
+    setLoading(false);
+  }
+
+
   const logout = () => {
     setToken(null);
     setUser(null);
     navigate("/login");
+    setError(null);
+    setLoginError(null);
+    setRegisterError(null);
     window.localStorage.removeItem("token");
   };
 
@@ -96,7 +127,7 @@ const AuthProvider = ({ children }) => {
   }, [token]);
 
 
-  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode ,setError,setLoginError,loginError};
+  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode,register,setRegisterError,registerError ,setError,setLoginError,loginError};
 
   return (
     <AuthContext.Provider value={value}>

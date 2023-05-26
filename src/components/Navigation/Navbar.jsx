@@ -3,6 +3,7 @@ import logo from '../../assets/images/Logo.png';
 import { Link, useResolvedPath } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
 import { MdOutlineLightMode,MdOutlineDarkMode } from "react-icons/md";
+import {RiLoginCircleLine} from "react-icons/ri";
 
 function Navbar() {
     const {toggleDarkMode, darkMode,token,user} = useContext(AuthContext)
@@ -15,6 +16,7 @@ function Navbar() {
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, [scrollTop]);
+
   return (
     <div>
         <nav className={`${path.pathname === '/'?(scrollTop === 0?"bg-blue-50 dark:bg-blue-900  shadow-sm":""): (scrollTop === 0?'bg-white dark:bg-gray-900 border-gray-200':"")}   fixed w-full top-0 z-50 backdrop-blur-sm duration-150`}>
@@ -24,11 +26,14 @@ function Navbar() {
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">XX Library</span>
                 </Link>
                 <div className="flex items-center md:order-2">
-                    {token && <Link to={"/profile"} className="flex mr-3 text-sm bg-gray-800 rounded-full  focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                        <span className="sr-only">Open user menu</span>
-                        <img className="w-8 h-8 rounded-full" src={user.avatar} alt="user photo" />
+                    {user && <Link to={"/profile"} className="flex mr-3 text-sm bg-gray-800 rounded-full  focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                        <img className="w-8 h-8 rounded-full" src={user.avatar} alt={user.name} />
                     </Link>}
-                    <button type="button" onClick={toggleDarkMode} className="flex mr-3 text-sm dark:bg-gray-800 bg-gray-200 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    {path.pathname==='/' && !token && <Link to="/login" className="flex mr-3 text-sm dark:bg-gray-800 bg-gray-200 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 hover:scale-125 duration-200" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                        <span className="sr-only">Open user menu</span>
+                        <RiLoginCircleLine className="w-8 h-8 p-1 rounded-full" />
+                    </Link>}
+                    <button type="button" onClick={toggleDarkMode} className="flex mr-3 text-sm dark:bg-gray-800 bg-gray-200 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 hover:scale-125 duration-200" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span className="sr-only">Open user menu</span>
                         {darkMode !== 'dark'?<MdOutlineLightMode className="w-8 h-8 p-1 rounded-full" />:<MdOutlineDarkMode className="w-8 h-8 p-1 rounded-full" />}
                     </button>
