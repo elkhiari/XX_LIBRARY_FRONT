@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom'
 import Register from '../../pages/Register'
 import Login from '../../pages/Login'
 import Home from '../../pages/Home'
+import AddBook from '../../pages/AddBook'
 
 function Routing() {
   const {token} = useContext(AuthContext)
@@ -20,7 +21,7 @@ function Routing() {
             <Route path="/Dashboard" element={token?"Dashboard page":<Navigate to="/login"/>} />
             <Route path="/Settings" element={token?"Settings page":<Navigate to="/login"/>} />
             <Route path="/Book/:id" element={token?"One book page":<Navigate to="/login"/>} />
-            <Route path="/Add_books" element={token?"Add book page":<Navigate to="/login"/>} />
+            <Route path="/Add_books" element={token?<AddBook />:<Navigate to="/login"/>} />
             <Route path="/search" element={"search page"} />
             <Route path="/categories" element={"categories page"} />
             <Route path="/categories/:id" element={"categories books page"} />

@@ -15,6 +15,9 @@ function Register() {
   const [name, setName] = useState()
   const {register,setRegisterError,registerError,loading} = useContext(AuthContext);
   useEffect(() => {
+    document.title = "Register"
+  }, [])
+  useEffect(() => {
     if(file){
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -22,7 +25,6 @@ function Register() {
       reader.onerror = error => console.log(error);
     }
   }, [file])
-
   const handleSubmit = (e) => {
     e.preventDefault()
     if(!email || !password || !name || !gender || !confirmPassword) return setRegisterError("Please fill all the fields");
@@ -31,6 +33,7 @@ function Register() {
     if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) return setRegisterError("Password must have at least one number, one lowercase and one uppercase letter and at least 8 characters");
     if(password !== confirmPassword) return setRegisterError("Passwords don't match");
     setRegisterError(null)
+    console.log(avatar)
     register(email, password, name , gender, avatar);
   }
   return (

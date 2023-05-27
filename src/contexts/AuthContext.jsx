@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [loginError, setLoginError] = useState(null);
   const [registerError, setRegisterError] = useState(null);
+  const [typeError, setTypeError] = useState(null);
   const [darkMode, setDarkMode] = useState(window.localStorage.getItem("darkMode"));
   const navigate = useNavigate();
   
@@ -71,19 +72,24 @@ const AuthProvider = ({ children }) => {
           gender,
           avatar
         });
-        const data = response.data;
-        if (data.message) {
-          setUser(data.user);
-          setToken(data.token);
-          window.localStorage.setItem("token", data.token);
+        if (response.data && response.data.message) {
+          setUser(response.data.user);
+          setToken(response.data.token);
+          window.localStorage.setItem("token", response.data.token);
           navigate("/");
           setError(
-            `Dear ${data.user.name}, Congratulations! You have successfully registered`
-          )
+            `Dear ${response.data.user.name}, Congratulations! You have successfully registered`
+          );
+        } else {
+          setRegisterError("Unexpected response from the server");
         }
     } catch (error) {
-        setRegisterError(error.response.data.message+". Please try again.");
-        console.log(error);
+      if (error.response && error.response.data && error.response.data.message) {
+        setRegisterError(error.response.data.message + ". Please try again.");
+      } else {
+        setRegisterError("An error occurred. Please try again.");
+      }
+      console.log(error);
     }
     setLoading(false);
   }
@@ -127,7 +133,7 @@ const AuthProvider = ({ children }) => {
   }, [token]);
 
 
-  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode,register,setRegisterError,registerError ,setError,setLoginError,loginError};
+  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode,register,setRegisterError,registerError ,setError,setLoginError,loginError,setTypeError,typeError};
 
   return (
     <AuthContext.Provider value={value}>
