@@ -88,7 +88,7 @@ function UsersProfile() {
             <div className="flex flex-col items-center mt-4 justify-centerw-full">
             <div className="mx-auto place-items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-3 mt-6">
             {posts && posts.map((book,index) => (
-                index >= 20 ? null : (user.role === "admin"?<MyCard key={book._id} book={book} boxShadow={true} handleClick={()=>handleClick(book)} />:<Link to={"/books/"+book._id} ><MyCard key={book._id} book={book} boxShadow={true} handleClick={()=>handleClick(book)} /></Link>)
+                index >= 20 ? null : (user?.role === "admin"?<MyCard key={book._id} book={book} boxShadow={true} handleClick={()=>handleClick(book)} />:<Link to={"/books/"+book._id} ><MyCard key={book._id} book={book} boxShadow={true} handleClick={()=>handleClick(book)} /></Link>)
             ))}
         </div>
 
