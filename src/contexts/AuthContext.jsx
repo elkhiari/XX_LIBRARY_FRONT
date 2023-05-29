@@ -133,7 +133,7 @@ const AuthProvider = ({ children }) => {
   }, [token]);
 
 
-  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode,register,setRegisterError,registerError ,setError,setLoginError,loginError,setTypeError,typeError};
+  const value = { user,darkMode, login, logout, token, loading, error,toggleDarkMode,register,setRegisterError,registerError ,setError,setLoginError,loginError,setTypeError,typeError,setLoading};
 
   return (
     <AuthContext.Provider value={value}>

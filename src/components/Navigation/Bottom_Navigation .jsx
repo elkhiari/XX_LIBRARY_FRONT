@@ -22,12 +22,12 @@ function Bottom_navigation () {
                         Home
                         <div className="tooltip-arrow" data-popper-arrow></div>
                     </div>
-                    <Link to={"/Categories"}  className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <Link to={"/books"}  className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
                         <ImBooks className='w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" fill="currentColor' />
                         <span className="sr-only">Wallet</span>
                     </Link>
                     <div id="tooltip-wallet" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                        categories
+                    books
                         <div className="tooltip-arrow" data-popper-arrow></div>
                     </div>
                     <div className="flex items-center justify-center">
@@ -54,7 +54,7 @@ function Bottom_navigation () {
                     </div>
                     <button type='button' onClick={logout} className="inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
                         <FiLogOut className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-red-600 dark:group-hover:text-red-500"  />   
-                        <span className="sr-only">Profile</span>
+                        <span className="sr-only">Logout</span>
                     </button>
                     <div id="tooltip-profile" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                         Logout

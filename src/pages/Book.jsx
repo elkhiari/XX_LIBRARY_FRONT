@@ -3,15 +3,19 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { FaBook, FaBookOpen, FaHeart, FaRegHeart } from 'react-icons/fa';
 import {FcLike} from 'react-icons/fc';
+import Loading from '../components/utils/Loading';
 
 function Book() {
     const [book,setBook] = useState([])
     const [show,setShow] = useState(false)
+    const [loading,setLoading] = useState(false)
     const {id} = useParams();
     const getBook = async () => {
         try {
+            setLoading(true)
             const response = await axios.get(process.env.REACT_APP_API_URL + '/books/book/'+id);
             setBook(response.data.books);
+            setLoading(false)
         }
         catch (error) {
             console.log(error);
@@ -33,7 +37,7 @@ function Book() {
 
   return (
     <div className='w-full min-h-screen  place-content-center place-items-center flex syne duration-200'>
-        {book && 
+        {loading?<Loading />:<>{book && 
         <div className="container px-2 min-h-screen  2xl:p-16 space-y-4 ">
             <div className='md:flex mt-24 space-y-8 md:space-y-0  bg-gray-400/30 shadow p-4 rounded w-full'>
                 <div className="md:w-1/3">
@@ -68,7 +72,7 @@ function Book() {
                             <div className='w-full p-4'>
                                 {/* <td className=" font-bold px-3 flex place-items-start py-3">Publisher</td>
                                 <td className="text-gray-500"><span className=' font-bold'>:</span> {book.publisher?.name}</td> */}
-                                    <Link to={"/user/"+book.publisher?._id} className='bg-white dark:bg-gray-700 space-x-10  flex justify-around place-items-center rounded p-4 shadow'>
+                                    <Link to={"/profile/"+book.publisher?._id} className='bg-white dark:bg-gray-700 space-x-10  flex justify-around place-items-center rounded p-4 shadow'>
                                         <img src={book.publisher?.avatar} className="w-20 rounded-md"/>
                                         <h1 className='text-center font-bold'>{book.publisher?.name}</h1>
                                     </Link>
@@ -102,6 +106,7 @@ function Book() {
 
             </div>
         </div>}
+        </>}
 
     </div>
   )

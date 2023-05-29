@@ -44,7 +44,7 @@ function Register() {
                     <h1 className="mb-8 text-3xl text-center font-extrabold">Sign up</h1>
                     <div className='mb-4'>
                       <label htmlFor="file">
-                        <img src={avatar} className='w-36 mx-auto h-36 bg-blue-300 mb-2 p-[1px] hover:scale-105 duration-150 ease-in-out cursor-pointer rounded-full' alt='' />
+                        <img src={avatar} className='w-36 mx-auto object-cover h-36 bg-blue-300 mb-2 p-[1px] hover:scale-105 duration-150 ease-in-out cursor-pointer rounded-full' alt='' />
                         <p className='text-center text-sm text-gray-500'>Choose your photo</p>
                       </label>
                       <input type='file'  name='file' id='file' onChange={(e)=>setFile(e.target.files[0])} className='hidden'/>

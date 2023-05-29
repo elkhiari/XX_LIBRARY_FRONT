@@ -46,7 +46,7 @@ function Model({hidden, setHidden,setCover,cover,setUrl}) {
                 {cover && 
                 <>
                 <div className={` bg-gray-300 text-white mx-auto  h-[350px] w-[250px]  relative`}>
-                    <img src={cover} alt="" onError={handleImageError} className={` h-full  rounded-md  mx-auto shadow-lg`}/>
+                    <img src={cover} alt="" onError={handleImageError} className={` h-full object-cover  rounded-md  mx-auto shadow-lg`}/>
                     <div className='text-lg flex place-content-center  place-items-center top-3 w-full   absolute rounded-full'>
                     <TiDelete className='w-[30px] h-[30px]  cursor-pointer duration-150 hover:scale-110' onClick={()=>setCover("")} />
                     </div>                    

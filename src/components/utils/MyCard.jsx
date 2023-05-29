@@ -2,7 +2,7 @@ import React from 'react'
 import CoverError from '../../assets/images/cover-error.png'
 function MyCard({book,boxShadow,handleClick}) {
   return (
-        <div className={`rounded ${boxShadow === true?'shadow':""} w-[150px] h-[220px]  lg:w-[200px] lg:h-[300px]  relative hover:scale-105 duration-150 hover:border-2 border-solid dark:border-white border-black`}>
+        <div className={`rounded ${boxShadow === true?'shadow-lg':""} w-[150px] h-[220px]  lg:w-[200px] lg:h-[300px]  relative hover:scale-105 duration-150 hover:border-2 border-solid dark:border-white border-black`}>
         <div onClick={handleClick}>
             <div className="group overflow-hidden">
                 <img

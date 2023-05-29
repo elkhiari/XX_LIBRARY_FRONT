@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import Bookjson from "../../data/book.json";
@@ -10,14 +10,21 @@ import { Autoplay, Navigation, Pagination } from "swiper";
 import BookCard from "../utils/BookCard";
 import HomeTitle from "../title/HomeTitle";
 import axios from "axios";
+import { AuthContext } from "../../contexts/AuthContext";
+import Loading from "../utils/Loading";
 
 
 export default function Trending() {
+  // const {loading,setLoading} = useContext(AuthContext)
+  const [loading,setLoading] = useState(false)
     const [treading,setTreading] = useState([])
     const getBooks = async () => {
+      
         try {
+          setLoading(true)
           const response = await axios.get(process.env.REACT_APP_API_URL + '/books/mostLike/');
           setTreading(response.data.books);
+          setLoading(false)
         }
         catch (error) {
           console.log(error);
@@ -27,8 +34,9 @@ export default function Trending() {
         getBooks();
       },[])
   return (
-    <div>
-    <HomeTitle title="Treading " subtitle="top #10"/>
+    <div className="relative min-h-[300px]">
+      <HomeTitle title="Treading " subtitle="top #10"/>
+      {loading?<Loading />:
       <Swiper
         slidesPerView={2}
         pagination={{
@@ -69,6 +77,7 @@ export default function Trending() {
                 </SwiperSlide>
             ))}
       </Swiper>
+}
     </div>
   );
 }

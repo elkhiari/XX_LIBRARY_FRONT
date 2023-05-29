@@ -8,6 +8,8 @@ import Home from '../../pages/Home'
 import AddBook from '../../pages/AddBook'
 import Book from '../../pages/Book'
 import Profile from '../../pages/Profile'
+import UsersProfile from '../../pages/UsersProfile'
+import Books from '../../pages/Books'
 
 function Routing() {
   const {token} = useContext(AuthContext)
@@ -19,13 +21,14 @@ function Routing() {
             <Route path="/login" element={!token?<Login />:<Navigate to="/"/>} />
             <Route path="/" element={<Home />} />
             <Route path="/Books/:id" element={<Book />} />
+            <Route path='/Profile/:id' element={<UsersProfile/>} />
             
             <Route path="/Profile" element={token?<Profile />:<Navigate to="/login"/>} />
             <Route path="/Dashboard" element={token?"Dashboard page":<Navigate to="/login"/>} />
             <Route path="/Settings" element={token?"Settings page":<Navigate to="/login"/>} />
             <Route path="/Add_books" element={token?<AddBook />:<Navigate to="/login"/>} />
             <Route path="/search" element={"search page"} />
-            <Route path="/categories" element={"categories page"} />
+            <Route path="/books" element={<Books />} />
             <Route path="/categories/:id" element={"categories books page"} />
             <Route path="*" element={"Error 404"} />
     </Routes>
