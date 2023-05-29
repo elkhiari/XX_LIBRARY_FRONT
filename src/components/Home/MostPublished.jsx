@@ -80,7 +80,7 @@ function MostPublished() {
                 index > 10 ? null : 
                 <SwiperSlide className="mt-5 mb-5 syne " key={index}>
                     <div className="flex items-center justify-center flex-col p-5 w-[150px] h-[150px] lg:w-[200px] lg:h-[200px]  space-y-5 cursor-pointer hover:scale-110 hover:lg:scale-105  hover:hue-rotate-15 duration-700 ease-in-out hover:rounded-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" >
-                        <img src={users.avatar} alt="avatar" className="w-20 h-20 lg:w-28 object-cover lg:h-28 z-10 rounded-lg " onClick={()=>handleClick(users._id)} />
+                        <img src={process.env.REACT_APP_API_URL+users.avatar} alt="avatar" className="w-20 h-20 lg:w-28 object-cover lg:h-28 z-10 rounded-lg " onClick={()=>handleClick(users._id)} />
                         <div className="px-3 py-1 text-[5px] md:text-[7px] lg:text-[10px] font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full  dark:bg-blue-900 dark:text-blue-200">{users.name}</div>
                     </div>
                 </SwiperSlide>

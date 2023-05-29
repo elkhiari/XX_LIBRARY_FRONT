@@ -27,7 +27,7 @@ function Navbar() {
                 </Link>
                 <div className="flex items-center md:order-2">
                     {user && <Link to={"/profile"} className="flex mr-3 text-sm bg-gray-800 rounded-full  focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                        <img className="w-8 h-8 rounded-full" src={user.avatar} alt={user.name} />
+                        <img className="w-8 h-8 rounded-full" src={process.env.REACT_APP_API_URL+user.avatar} alt={user.name} />
                     </Link>}
                     {path.pathname==='/' && !token && <Link to="/login" className="flex mr-3 text-sm dark:bg-gray-800 bg-gray-200 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 hover:scale-125 duration-200" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span className="sr-only">Open user menu</span>

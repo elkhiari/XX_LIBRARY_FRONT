@@ -62,16 +62,20 @@ const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
-  const register = async (email, password, name , gender, avatar) => {
+  const register = async (email, password, name , gender, file) => {
     setLoading(true);
     try {
-        const response = await axios.post(process.env.REACT_APP_API_URL+"/users/register", {
-          email,
-          password,
-          name,
-          gender,
-          avatar
-        });
+      const formdata = new FormData();
+      formdata.append("email", email);
+      formdata.append("password", password);
+      formdata.append("name", name);
+      formdata.append("gender",gender)
+      formdata.append("avatar", file);
+        const response = await axios.post(process.env.REACT_APP_API_URL+"/users/register", formdata, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            },
+            });
         if (response.data && response.data.message) {
           setUser(response.data.user);
           setToken(response.data.token);
@@ -111,6 +115,7 @@ const AuthProvider = ({ children }) => {
       const response = await axios.get(process.env.REACT_APP_API_URL+"/users/me", {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         },
       });
       const data = response.data;

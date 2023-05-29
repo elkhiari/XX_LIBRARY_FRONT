@@ -18,12 +18,16 @@ function Register() {
     document.title = "Register"
   }, [])
   useEffect(() => {
+    // setAvatar(URL.createObjectURL(file))
+    // when get file set avatar egal src of image to show them
     if(file){
       const reader = new FileReader();
+      reader.onload = (e) => {
+        setAvatar(e.target.result);
+      }
       reader.readAsDataURL(file);
-      reader.onload = () => setAvatar(reader.result);
-      reader.onerror = error => console.log(error);
     }
+
   }, [file])
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -33,8 +37,7 @@ function Register() {
     if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) return setRegisterError("Password must have at least one number, one lowercase and one uppercase letter and at least 8 characters");
     if(password !== confirmPassword) return setRegisterError("Passwords don't match");
     setRegisterError(null)
-    console.log(avatar)
-    register(email, password, name , gender, avatar);
+    register(email, password, name , gender, file);
   }
   return (
     <div>

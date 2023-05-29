@@ -73,7 +73,7 @@ function Book() {
                                 {/* <td className=" font-bold px-3 flex place-items-start py-3">Publisher</td>
                                 <td className="text-gray-500"><span className=' font-bold'>:</span> {book.publisher?.name}</td> */}
                                     <Link to={"/profile/"+book.publisher?._id} className='bg-white dark:bg-gray-700 space-x-10  flex justify-around place-items-center rounded p-4 shadow'>
-                                        <img src={book.publisher?.avatar} className="w-20 rounded-md"/>
+                                        <img src={process.env.REACT_APP_API_URL+book.publisher?.avatar} className="w-20 rounded-md"/>
                                         <h1 className='text-center font-bold'>{book.publisher?.name}</h1>
                                     </Link>
                             </div>

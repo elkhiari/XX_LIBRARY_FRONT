@@ -47,7 +47,7 @@ function Profile() {
     <div className='w-full py-16  pb-32 container mx-auto  syne'>
         {loading?<Loading />:<>{user && <div className="flex flex-col items-center mt-4 justify-center">
             <div className={`flex place-content-center bg-${user.gender === "male"?"blue":"pink"}-400 dark:bg-${user.gender === "male"?"blue":"pink"}-300 w-full p-4 md:rounded space-x-20`} >
-                <img src={user.avatar} alt="" className="w-24 h-24 rounded-full object-cover" />
+                <img src={process.env.REACT_APP_API_URL+user.avatar} alt="" className="w-24 h-24 rounded-full object-cover" />
                 <div className="flex flex-col  justify-center ml-5">
                     <h1 className="text-2xl font-bold flex place-content-center place-items-center ">{user.name}{user.role === "admin" && <VscVerifiedFilled className='ml-3' />}</h1>
                     <h2 className="text-sm font-medium">{user.email}</h2>
