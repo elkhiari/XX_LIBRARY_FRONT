@@ -94,9 +94,9 @@ function UsersProfile() {
 
         </div>
         </div>
-       {user?.role === "admin" && <>
+       {user?.role === "admin" ? <>
        {hidden && <Model setHidden={setHidden} book={book}  />}
-       </>}
+       </>:""}
                 </>}
 
     </div>
